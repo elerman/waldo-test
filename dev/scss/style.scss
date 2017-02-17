@@ -1,9 +1,77 @@
-$primary: #006699;
-
 form{
+	margin-top: 10px;
 	input[type="submit"]{
 		&:disabled{
 			color: #ddd;
 		}	
+	}
+}
+
+.pizza-menu{
+	background: #ddd;
+    border: 1px solid;
+    margin-bottom: 20px;
+    padding: 15px;
+	h3{
+		margin-top: 0;
+	}
+}
+
+.pizza-list-item {
+    background: white;
+    border: 1px solid;
+    margin-bottom: 5px;
+    padding: 10px;
+	cursor: pointer;
+	color: black;
+	transition: .2s all;
+	&:hover{
+		background: darken(white,5%)
+	}
+	span{
+		text-transform: capitalize;
+	}
+}
+
+.selected-pizza{
+	.topping{
+		padding: 10px;
+		margin-left: 5px;
+		label{
+			text-transform: capitalize;
+			font-size: 15px;
+			input{
+				margin-left: 5px;
+			}
+		}
+	}
+}
+
+.pizza-order{
+	background: #f6f6f6;
+    border: 1px solid #ddd;
+    padding: 10px;
+	font-size: 17px;
+}
+
+.cart{
+	margin-top: 50px;
+    font-size: 20px;
+	ul{
+		margin-bottom: 20px;
+		li{
+			.pizza-list-item{
+				border: none;
+			}
+			background: #ddd;
+			border: 1px solid #ddd;
+		}
+	}
+	.finalPrice{
+		margin-top: 60px;
+		label{
+			padding: 20px;
+			font-size: 25px;
+		}
 	}
 }

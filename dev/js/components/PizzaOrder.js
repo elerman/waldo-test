@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import NumberFormat from 'react-number-format'
 
 class PizzaOrder extends Component {
 
@@ -17,15 +18,17 @@ class PizzaOrder extends Component {
         const price = this.props.pizza.basePrice + sumt.price
 
         return (
-            <div>
-                <label>Current Pizza selection:</label>
-                <label>{this.props.pizza.name}</label>
+            <section className="pizza-order">
+                <h5>Current Pizza selection:</h5>
+                <label className="label label-success">{this.props.pizza.name}</label>
+                <br />
                 {toppings
                     .map((t, index) => {
-                        return <label key={index}>{t.name}</label>
+                        return <label key={index} className="label label-info">{t.name}</label>
                     })}
-                {price}
-            </div>
+                <br />
+                <label><NumberFormat displayType={'text'} value={price.toFixed(2)} prefix={'$'}/></label>
+            </section>
         )
     }
 }

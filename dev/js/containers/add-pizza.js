@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import PizzaCart from './pizza-cart'
+import PizzaMenu from './pizza-menu'
 import SelectedPizza from './selected-pizza'
 import PizzaOrder from '../components/PizzaOrder'
 import {addToCart} from '../actions/index'
@@ -29,18 +29,18 @@ class AddPizza extends Component {
         const toppings = this.props.toppings ? this.props.toppings: []
 
             return (
-                <section classID="pizza-menu" className="row">
-                    <PizzaCart />
+                <section className="pizza-menu" className="row">
+                    <PizzaMenu />
                     <SelectedPizza />
                     <div className="col-md-12">
-                        <section classID="current-pizza-price">
-                            {toppings.length}
+                        <section className="current-pizza-price">
+                            {toppings.length!=0?<label>Selected Toppings: {toppings.length}</label>:''}
                             <PizzaOrder pizza={this.props.pizza} toppings={toppings}/>
                         </section>
                     </div>
                     <div className="col-md-12">
                         <form onSubmit={(evt)=>this.handleSubmit(evt,this)}>
-                            <input type="submit" disabled={!this.props.pizza} value="Add Pizza to cart"></input>
+                            <input type="submit" className="btn btn-success btn-block btn-lg" disabled={!this.props.pizza} value="Add Pizza to cart"></input>
                         </form>
                     </div>
                 </section>

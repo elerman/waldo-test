@@ -4,7 +4,7 @@ import {bindActionCreators} from 'redux';
 import {fetchPizzas, pizzaSelection} from '../actions/index'
 import PizzaListItem from '../components/PizzaListItem'
 
-class PizzaCart extends Component {
+class PizzaMenu extends Component {
 
     constructor(props){
         super(props);
@@ -22,11 +22,12 @@ class PizzaCart extends Component {
             });
 
             return (
-                <div>
+                <section className="pizza-menu">
+                    <h3>Choose your pizza!</h3>
                     <ul className="list-unstyled">
                         {pizzalist}
                     </ul>
-                </div>
+                </section>
             );
         }return (<div>Fetching...</div>)
     }
@@ -44,4 +45,4 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({fetchPizzas: fetchPizzas, pizzaSelection: pizzaSelection},dispatch)
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(PizzaCart);
+export default connect(mapStateToProps,mapDispatchToProps)(PizzaMenu);

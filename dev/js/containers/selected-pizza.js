@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {toppingSelection} from '../actions/index'
+import NumberFormat from 'react-number-format'
 
 class SelectedPizza extends Component {
 
@@ -31,9 +32,9 @@ class SelectedPizza extends Component {
         }
 
         const toppings = this.props.pizza.toppings.map((topping, index)=>{
-            return <li key={index}>
+            return <li key={index} className="topping label label-info">
                        <label>
-                            {topping.topping.name}
+                            {topping.topping.name} - <NumberFormat displayType={'text'} value={topping.topping.price} prefix={'$'}/>
                             <input type="checkbox" 
                             disabled={checkDisable(this.props,topping)} 
                             checked={checkState(this.props,topping)}
@@ -42,10 +43,12 @@ class SelectedPizza extends Component {
                        </label>
                    </li>
         })
+
+        const max = this.props.pizza.maxToppings!=null?'(Max Toppings '+this.props.pizza.maxToppings+')':''
             return (
-                <div>
-                    Your selected pizza {this.props.pizza.name}    
-                    <ul>{toppings}</ul>
+                <div className="selected-pizza">
+                    <h4>You selected a {this.props.pizza.name} pizza - Want to add some toppings? {max}</h4>
+                    <ul className="list-inline">{toppings}</ul>
                 </div>
             )
         }
