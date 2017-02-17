@@ -1,5 +1,9 @@
 $primary: #006699;
 
-h2 {
-	color: $primary;
+form{
+	input[type="submit"]{
+		&:disabled{
+			color: #ddd;
+		}	
+	}
 }
